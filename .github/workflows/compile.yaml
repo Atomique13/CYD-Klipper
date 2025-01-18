@@ -5,16 +5,7 @@ permissions:
     id-token: write
 
 on:
-  push:
-    branches:
-      - '*'
-    tags-ignore:
-      - '*'
-  pull_request:
   workflow_dispatch:
-  release:
-    types: [created]
-
 jobs:
   build:
     runs-on: windows-latest
