@@ -144,8 +144,10 @@ void screen_lv_touchRead(lv_indev_drv_t *indev_driver, lv_indev_data_t *data)
 
 void screen_setup()
 {
+    //have no idea why this is needed, but it is
     pinMode(BUZZER_PIN, OUTPUT);
-    digitalWrite(BUZZER_PIN, HIGH);
+    ledcSetup(4, 5000, 8);
+    ledcAttachPin(BUZZER_PIN, 4);
 
     tft.begin();
     tft.setRotation(global_config.rotate_screen ? 3 : 1);
