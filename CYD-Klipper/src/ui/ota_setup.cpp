@@ -8,7 +8,7 @@
 #include "../core/semaphore.h"
 
 //const char *ota_url = "https://gist.githubusercontent.com/suchmememanyskill/ece418fe199e155340de6c224a0badf2/raw/0d6762d68bc807cbecc71e40d55b76692397a7b3/update.json"; // Test url
-const char *ota_url = "https://suchmememanyskill.github.io/CYD-Klipper/OTA.json"; // Prod url
+const char *ota_url = "http://mol.local:1234/OTA.json"; // Prod url
 ESP32OTAPull ota_pull;
 static bool update_available;
 static bool ready_for_ota_update = false;
@@ -81,7 +81,7 @@ void ota_do_update(bool variant_automatic)
 
 void ota_init()
 {
-    //ota_pull.AllowDowngrades(true);
+    ota_pull.AllowDowngrades(true);
     int result = ota_pull.CheckForOTAUpdate(ota_url, REPO_VERSION, ESP32OTAPull::ActionType::DONT_DO_UPDATE);
     LOG_F(("OTA Update Result: %d\n", result))
     update_available = result == ESP32OTAPull::UPDATE_AVAILABLE;
